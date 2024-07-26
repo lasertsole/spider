@@ -14,7 +14,7 @@ class Spider2107Pipeline:
         self.wb = openpyxl.Workbook()
         self.ws = self.wb.active
         self.ws.title = 'Top250'
-        self.ws.append(['标题', '评分', '主题'])
+        self.ws.append(['标题', '评分', '主题','时长','简介'])
 
     def close_spider(self, spider):
         self.wb.save('top250.xlsx')
@@ -22,5 +22,8 @@ class Spider2107Pipeline:
         title = item.get('title','')
         rank = item.get('rank','')
         subject = item.get('subject','')
-        self.ws.append([title, rank, subject])
+        duration = item.get('duration','')
+        intro = item.get('intro','')
+        self.ws.append([title, rank, subject, duration, intro])
+        # self.ws.append([title, rank, subject])
         return item
