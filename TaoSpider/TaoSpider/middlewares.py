@@ -67,7 +67,7 @@ class TaospiderDownloaderMiddleware:
     page = None
 
     def __init__(self, delay):
-        self.page = createWebPage()
+        self.page = createWebPage(headless=True)
         # 引入随机延迟，绕过目标网站的异常流量监控反爬
         self.delay = delay
 
